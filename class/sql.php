@@ -4,13 +4,13 @@
 		public function __construct(){
 			$this->conn = new PDO("mysql:dbname=dbphp7;host=localhost", "root", "m63515");
 		}
-		private function setParams($statment, $parameters = array()){
+		private function setParams($statement, $parameters = array()){
 			foreach($parameters as $key => $value){
-				$this->setParam($key, $value);
+				$this->setParam($statement, $key, $value);
 			}
 		}
-		private function setParam($statment, $key, $vaLue){
-			$statment->bindParam($key, $value);
+		private function setParam($statement, $key, $vaLue){
+			$statement->bindParam($key, $value);
 		}
 		public function query($rawQuery, $params = array()){
 			$stmt = $this->conn->prepare($rawQuery);
